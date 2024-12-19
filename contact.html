@@ -26,7 +26,7 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <!-- =======================================================
   * Template Name: Eterna
   * Template URL: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/
@@ -221,11 +221,11 @@
 
 
           <div class="col-lg-6">
-            <form id="myForm" action="https://api.web3forms.com/submit" method="POST" data-aos="fade-up" data-aos-delay="400">
+            <form id="submit-form" action="" data-aos="fade-up" data-aos-delay="400">
               <div class="row gy-4">
 
                 <div class="col-md-6">
-                  <input type="hidden"  name="access_key" value="1dd9b381-e115-4ab2-8b33-ff8bb5c09566">
+                  
                   <input type="text"  name="name" class="form-control" placeholder="Your Name" required="">
                 </div>
 
@@ -245,7 +245,7 @@
                   <!-- <div class="loading">Loading</div>
                   <div class="error-message"></div>
                   <div class="sent-message">Your message has been sent. Thank you!</div> -->
- <input type="text" name="hp" style="display:none;">
+
                   <button type="submit" style="padding:10px 20px;border-radius: 25px;border: none;background-color: #e96b56; color:azure;">Send Message</button>
                 </div>
 
@@ -368,6 +368,26 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    $("#submit-form").submit((e)=>{
+        e.preventDefault()
+        $.ajax({
+            url:"https://script.google.com/macros/s/AKfycbzOk-owBNpF5xm-k_NYRkw3LTgCmcO_86B2xwGP0I4qhIMQUy2KgJlrTY_dYj719skRlQ/exec",
+            data:$("#submit-form").serialize(),
+            method:"post",
+            success:function (response){
+                alert("Form submitted successfully")
+                window.location.reload()
+                //window.location.href="https://google.com"
+            },
+            error:function (err){
+                alert("Something Error")
+
+            }
+        })
+    })
+</script>
 
 </body>
 
